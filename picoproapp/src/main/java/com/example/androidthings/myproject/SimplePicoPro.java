@@ -157,6 +157,25 @@ public abstract class SimplePicoPro extends SimpleBoard {
             Log.e(TAG,"printString: Could not find R.id.editText");
         }
     }
+    void deletecharToScreen() {
+        if (activity == null) {
+            Log.e(TAG,"printString: activity is null");
+            return;
+        }
+        /*by kh9341101*/
+        EditText editText;
+        editText = (EditText) activity.findViewById(R.id.editText);
+
+        if(editText != null) {
+            String text = editText.getText().toString();
+            if(text.length()==0) return;
+            //editText.setText(text.substring(0, text.length() - 1));
+            editText.setText("");
+            editText.getText().append(text.substring(0, text.length() - 1));
+        } else {
+            Log.e(TAG,"printString: Could not find R.id.editText");
+        }
+    }
 
     void clearStringOnScreen() {
         if (activity == null) {
